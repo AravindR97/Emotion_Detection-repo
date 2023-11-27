@@ -2,7 +2,6 @@
 This module contains 'emotion_detector' function that will return a dictionary
 showing various emotions and their scores after emotion analysis
 """
-
 import requests
 
 def emotion_detector(text_to_analyze):
@@ -18,5 +17,10 @@ def emotion_detector(text_to_analyze):
     Index = scores.index(max_score)
     dominant_emotion = emotions[Index]
     result['dominant_emotion'] = dominant_emotion
-    return result
+    
+    if r.status_code == 400:
+        return dict.fromdict(result, None)
+    else:
+        return result
+
     
