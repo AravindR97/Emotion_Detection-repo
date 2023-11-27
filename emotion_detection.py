@@ -1,3 +1,8 @@
+"""
+This module contains 'emotion_detector' function that will return a dictionary
+showing various emotions and their scores after emotion analysis
+"""
+
 import requests
 
 def emotion_detector(text_to_analyze):
@@ -6,4 +11,12 @@ def emotion_detector(text_to_analyze):
     data = { "raw_document": { "text": text_to_analyze } }
 
     r = requests.post(url, headers= head, json= data)
-    return r.text
+    result = r.json()['emotionPredictions'][0]['emotion']
+    scores = list(result.values())
+    emotions = list(result.keys())
+    max_score = max(scores)
+    Index = scores.index(max_score)
+    dominant_emotion = emotions[Index]
+    result['dominant_emotion'] = dominant_emotion
+    return result
+    
