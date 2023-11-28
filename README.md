@@ -27,3 +27,8 @@ The following tasks were done as part of this project:
 * Requests
 * IBM Watson AI NLP Library
 * Flask
+### Installation
+
+### How to run the program
+
+## Credits
