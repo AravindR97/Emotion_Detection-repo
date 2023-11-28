@@ -14,7 +14,7 @@ def emot_detector():
     text = request.args['textToAnalyze']
     result = emotion_detector(text)
 
-    if result['dominant_emotion'] is None:
+    if result is None:
         message = "Invalid text! Please try again!"
     else:
         message = f"""For the given statement, the system response is 'anger': {result['anger']},
